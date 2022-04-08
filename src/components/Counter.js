@@ -22,6 +22,11 @@ export default class Counter extends React.Component {
     console.log('-------------------');
   }
 
+  componentWillUnmount() {
+    console.log('Component Will Unmount');
+    console.log('-------------------');
+  }
+
   render() {
     console.log('render');
 
