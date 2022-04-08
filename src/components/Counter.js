@@ -17,6 +17,11 @@ export default class Counter extends React.Component {
     };
   }
 
+  componentDidMount() {
+    console.log('Component Did Mount');
+    console.log('-------------------');
+  }
+
   render() {
     console.log('render');
 
@@ -27,5 +32,9 @@ export default class Counter extends React.Component {
         <div className="counter">Counter: {this.state.counter}</div>
       </div>
     );
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    console.log('Component Did Update');
   }
 }
