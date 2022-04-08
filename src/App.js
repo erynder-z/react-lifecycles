@@ -23,8 +23,13 @@ class App extends React.Component {
     this.ignoreProp = () => {
       this.setState({ ignoreProp: Math.random() });
     };
+
     this.seedGenerator = () => {
       this.setState({ seed: Number.parseInt(Math.random() * 100) });
+    };
+
+    this.toggleError = () => {
+      this.setState({ showErrorCompoment: !this.state.showErrorCompoment });
     };
   }
   render() {
@@ -38,10 +43,12 @@ class App extends React.Component {
         </button>
         <button onClick={this.ignoreProp}>Ignore prop</button>
         <button onClick={this.seedGenerator}>Generate seed</button>
+        <button onClick={this.toggleError}>Toggle Error</button>
         {this.state.mount ? (
           <Counter
             ignoreProp={this.state.ignoreProp}
             seed={this.state.seed}
+            showErrorCompoment={this.showErrorCompoment}
           ></Counter>
         ) : null}
       </div>
