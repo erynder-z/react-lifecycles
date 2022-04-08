@@ -37,6 +37,10 @@ export default class Counter extends React.Component {
     console.log('-------------------');
   }
 
+  componentDidCatch(error, info) {
+    console.log('Component Did Catch');
+  }
+
   shouldComponentUpdate(nextProps, nextState) {
     if (
       nextProps.ignoreProp &&
@@ -47,6 +51,11 @@ export default class Counter extends React.Component {
     }
     console.log('Should Component Update - RENDER');
     return true;
+  }
+
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    console.log('Get Snapshot Before Update');
+    return null;
   }
 
   render() {
