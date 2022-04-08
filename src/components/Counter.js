@@ -32,15 +32,6 @@ export default class Counter extends React.Component {
     console.log('-------------------');
   }
 
-  componentWillUnmount() {
-    console.log('Component Will Unmount');
-    console.log('-------------------');
-  }
-
-  componentDidCatch(error, info) {
-    console.log('Component Did Catch');
-  }
-
   shouldComponentUpdate(nextProps, nextState) {
     if (
       nextProps.ignoreProp &&
@@ -72,5 +63,14 @@ export default class Counter extends React.Component {
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     console.log('Component Did Update');
+  }
+
+  componentWillUnmount() {
+    console.log('Component Will Unmount');
+    console.log('-------------------');
+  }
+
+  componentDidCatch(error, info) {
+    console.log('Component Did Catch');
   }
 }
