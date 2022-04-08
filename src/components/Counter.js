@@ -10,6 +10,7 @@ export default class Counter extends React.Component {
     console.log('constructor');
     this.state = {
       counter: 0,
+      initializing: true,
     };
 
     this.increment = () => {
@@ -33,6 +34,9 @@ export default class Counter extends React.Component {
 
   componentDidMount() {
     console.log('Component Did Mount');
+    setTimeout(() => {
+      this.setState({ initializing: false });
+    }, 1000);
     console.log('-------------------');
   }
 
@@ -54,9 +58,13 @@ export default class Counter extends React.Component {
   }
 
   render() {
+    if (this.state.initializing) {
+      return <div>Initializing...</div>;
+    }
+
     console.log('render');
 
-    if (this.state.error) {
+    if (this.props.showErrorComponent && this.state.error) {
       return <div>Encounterd an error! {this.state.error.message}</div>;
     }
 
@@ -65,7 +73,10 @@ export default class Counter extends React.Component {
         <button onClick={this.increment}>Increment</button>
         <button onClick={this.decrement}>Decrement</button>
         <div className="counter">Counter: {this.state.counter}</div>
-        <ErrorComponent></ErrorComponent>
+        {this.props.showErrorComponent ? (
+          <ErrorComponent></ErrorComponent>
+        ) : null}
+        }
       </div>
     );
   }
